@@ -1,0 +1,81 @@
+
+<head>
+    <meta charset="UTF-8" />
+    
+<!--    wtf -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    
+    
+<!--    i get this. description. or whatever.-->
+    {block:Description}
+    <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
+    
+    
+<!--    hmm i get this too. title of page.-->
+    <title> {block:TagPage}
+            {Tag} posts - 
+            {/block:TagPage} 
+        {block:SearchPage}
+        {lang:Search results for SearchQuery} - {/block:SearchPage}
+        
+        {block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
+
+    
+<!--    I get this. responsiveness.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    
+<!--    if used on apple mobile web app, then that's cool-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+<!--    display icon or whatever.-->
+    <link rel="shortcut icon" href="{Favicon}">
+    
+<!--    wtf is this-->
+    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+    
+<!--    rss or whatever-->
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+<!--    why is there so much shit that's hidden wtf-->   
+
+    
+    
+    
+    
+    
+    
+  
+    <link href='//fonts.googleapis.com/css?family={select:Body Font}' rel='stylesheet' type='text/css'>
+    
+    <link href='//fonts.googleapis.com/css?family={select:Header Font}' rel='stylesheet' type='text/css'>
+    
+    <style>
+    body {
+        background: {block:IfNotBackgroundImageImage} url('{select:Pattern Style}') repeat {/block:IfNotBackgroundImageImage}
+        {BackgroundColor};
+        
+    font-family: {select:Body Font}, Arial, sans-serif;
+    }
+    
+    
+    h1, h2, h3, h4, .post-qoute blockquote, .search-results, .menu, .menu .nav-search form input, .menu-icon .title {font-family: {select:Header Font}, Arial, sans-serif;}
+    
+    {block:IfBackgroundImageImage}
+    #bg {position:fixed; top: 0px; width:100%; height:100%; background: url('{image:Background Image}') center center no-repeat; background-size: cover;}
+    {/block:IfBackgroundImageImage}
+    
+    a, a:active, cite {color: {AccentColor};}
+    .post-link .link {background: {AccentColor};}
+    .top-bar { {block:IfNotTransparentMenuBar}background: {color:Menu Bar Background}{/block:IfNotTransparentMenuBar}{block:IfTransparentMenuBar} background: rgba(0,0,0,0); {/block:IfTransparentMenuBar};} 
+    .menu-close { background: {color:Menu Bar Background};}
+    .top-bar .top-title h1 a, .menu-icon .title {color: {color:Menu Bar Text Color};}
+    .menu-icon span, .menu-icon span:before, .menu-icon span:after {background-color: {color:Menu Bar Text Color};}
+    .grid article.logo h1 a, .grid article.logo h2  {color: {TitleColor};}
+    .pace .pace-progress {background: {color:Menu Bar Text Color};}
+    {CustomCSS}
+    </style>
+    
+    <script src="//static.tumblr.com/vexeq8y/2UWnlzwc5/plugins-top.js" async></script>
+    
+</head>
