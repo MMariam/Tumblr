@@ -1,80 +1,73 @@
     <div id="wrapper">
-        <div id="header">
-            <div id="access">
-                <div class="menu">
-                    <div id="pages">
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            {block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
-                            {block:AskEnabled}<li class="ask"><a href="/ask" class="page">{AskLabel}</a></li>{/block:AskEnabled}
-                            {block:SubmissionsEnabled}<li class="submit"><a href="/submit" class="page">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
-                            <li class="archive"><a href="/archive">Archive</a></li>
-                            <li class="mobile"><a href="/mobile">Mobile</a></li>
-                            <li class="rss"><a href="{RSS}">RSS</a></li>
-                        </ul>
-                    </div><!-- #pages -->
-                    <div id="search">
-                        <form action="/search" method="get">
-                            <input type="text" name="q" value="{SearchQuery}"/>
-                            <input type="submit" value="Search" class="search-button"/>
-                        </form>
-                    </div><!-- #search -->
-                </div><!-- .menu -->
-            </div><!-- #access -->
-            <div id="branding">
-                <h1>
-                    {block:IfHeaderImage}<a href="/"><img src="{image:Header}" alt="{Title}" /></a>{/block:IfHeaderImage}
-                    {block:IfNotHeaderImage}<a href="/">{Title}</a>{/block:IfNotHeaderImage}
-                </h1>
-            </div><!-- #branding -->
-        </div><!-- #header -->
+<!--        header structure-->
+        
         <div id="main">
             <div id="container">
                 <div id="content">
+                    
+                    
                 {block:Posts}
+                    
+                    
                     <div id="post-{PostID}" class="post {block:Text}post-type-text{/block:Text}{block:Photo}post-type-photo{/block:Photo}{block:Photoset}post-type-photoset{/block:Photoset}{block:Quote}post-type-quote{/block:Quote}{block:Link}post-type-link{/block:Link}{block:Chat}post-type-chat{/block:Chat}{block:Video}post-type-video{/block:Video}{block:Audio}post-type-audio{/block:Audio}">
-                        <div class="post-meta">
+                       
+                        <div class="post-meta">  
                             <div class="type">
                                 <a href="{Permalink}">{block:Text}Text{/block:Text}{block:Photo}Photo{/block:Photo}{block:Photoset}Photoset{/block:Photoset}{block:Quote}Quote{/block:Quote}{block:Link}Link{/block:Link}{block:Chat}Chat{/block:Chat}{block:Video}Video{/block:Video}{block:Audio}Audio{/block:Audio}</a>
                             </div><!-- .type -->
+                            
                         {block:Date}
                             <div class="date">
                                 {Month} {DayOfMonthWithZero}, {Year}
                             </div><!-- .date -->
                         {/block:Date}
+                            
                         {block:IfDisqusShortname}
                             <div class="comments">
                                 <a href="{Permalink}#disqus_thread">0 comments</a>
                             </div>
                         {/block:IfDisqusShortname}
+                            
                         {block:NoteCount}
                             <div class="note-count">
                                 <a href="{Permalink}#notes">{NoteCountWithLabel}</a>
                             </div><!-- .note-count -->
                         {/block:NoteCount}
+                            
                         </div><!-- .post-meta -->
+                        
+                        
                         <div class="post-content">
                         {block:Text}
                             {block:Title}<h3><a href="{Permalink}">{Title}</a></h3>{/block:Title}
                             {Body}
                         {/block:Text}
+                            
                         {block:Photo}
                             {LinkOpenTag}<img src="{PhotoURL-500}" class="photo" alt="{PhotoAlt}" />{LinkCloseTag}
                             {block:HighRes}<a href="{PhotoURL-HighRes}" class="high-res" target="_blank"></a>{/block:HighRes}
                             {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
                         {/block:Photo}
+                            
+                            
                         {block:Photoset}
                             {Photoset-500}
                             {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
                         {/block:Photoset}
+                            
+                            
                         {block:Quote}
                             <div class="quote-content">"{Quote}"</div>
                             {block:Source}<p class="quote-source">&mdash; {Source}</p>{/block:Source}
                         {/block:Quote}
+                            
+                            
                         {block:Link}
                             <div class="link-wrap"><a href="{URL}" {Target}>{Name}</a></div>
                             {block:Description}<div class="description">{Description}</div>{/block:Description}
                         {/block:Link}
+                            
+                            
                         {block:Chat}
                             {block:Title}<h3><a href="{Permalink}">{Title}</a></h3>{/block:Title}
                             <ul class="chat-wrap">
@@ -86,21 +79,32 @@
                             {/block:Lines}
                             </ul>
                         {/block:Chat}
+                            
+                            
+                            
                         {block:Video}
                             <div class="video-wrap">{Video-500}</div>
                             {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
                         {/block:Video}
+                            
                         {block:Audio}
                             <div class="audio-wrap">{AudioPlayerGrey}</div>
                             {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
                         {/block:Audio}
+                            
                         {block:HasTags}
                             <div class="tags">
                                 <p>Tags: {block:Tags}<a href="{TagURL}" class="single-tag">{Tag}</a> {/block:Tags}</p>
                             </div>
                         {/block:HasTags}
                         </div><!-- post-content -->
+                    
+                    
+                    
+                    
                     </div><!-- .post -->
+                    
+                    
                     {block:IfDisqusShortname}{block:Permalink}
                         <div id="disqus_thread"></div>
                         <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
@@ -108,6 +112,8 @@
                     {/block:Permalink}{/block:IfDisqusShortname}
                     {block:PostNotes}<div id="post-notes">{PostNotes}</div>{/block:PostNotes}
                 {/block:Posts}
+                    
+                    
                 {block:Pagination}
                     <div class="pagination">
                         {block:PreviousPage}<span class="previous-page"><a href="{PreviousPage}">&#171; Previous</a></span>{/block:PreviousPage}
@@ -116,7 +122,33 @@
                 {/block:Pagination}
                 </div><!-- #content -->
             </div><!-- #container -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             <div id="sidebar">
+                
             {block:IfShowAboutWidget}
                 <h3>About</h3>
                 <div id="about" class="widget">
@@ -124,12 +156,15 @@
                     {block:Description}<div class="description"><p>{Description}</p></div>{/block:Description}
                 </div>
             {/block:IfShowAboutWidget}
+                
 			{block:IndexPage}{block:IfShowStuffILikeWidget}{block:Likes}
                 <h3><a href="http://www.tumblr.com/liked/by/{Name}">Stuff I like</a></h3>
                 <div id="likes_container" class="widget">
                     {Likes limit="5" summarize="100" width="279"}
                 </div>
             {/block:Likes}{/block:IfShowStuffILikeWidget}{/block:IndexPage}
+                
+                
             {block:IndexPage}{block:IfShowLatestTweetsWidget}{block:Twitter}
                 <h3>Latest Tweets</h3>
                 <div id="twitter" class="widget">
@@ -152,6 +187,8 @@
                     }
                 </script>
             {/block:Twitter}{/block:IfShowLatestTweetsWidget}{/block:IndexPage}
+                
+                
             {block:IfShowPeopleIFollowWidget}{block:Following}
                 <h3>People I follow</h3>
                 <div id="following_container" class="widget">
@@ -162,9 +199,8 @@
                     </ul>
                 </div>
             {/block:Following}{/block:IfShowPeopleIFollowWidget}
+                
             </div><!-- #sidebar -->
         </div><!-- #main -->
-        <div id="footer">
-            <div id="colophon"><p>Powered by <a href="http://tumblr.com">Tumblr</a>. <a href="http://www.tumblr.com/theme/10375">Minimal Theme</a> designed by <a href="http://arturkim.com">Artur Kim</a>.</p></div>
-        </div><!-- #footer -->
+<!--        footer structure-->
     </div><!-- #wrapper -->
